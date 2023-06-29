@@ -4,10 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pain.databinding.TaskItemBinding
-import com.example.pain.data.Task
 
 class TaskAdapter(
-    private val tasks: List<Task>,
+    private val tasks: List<TaskViewData>,
     private val clickListener: TaskClickListener
 ): RecyclerView.Adapter<TaskViewHolder>() {
 

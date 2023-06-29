@@ -8,12 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pain.TaskApp
-import com.example.pain.data.Task
 import com.example.pain.databinding.FragmentCompletedTasksBinding
-import com.example.pain.presentation.components.TaskAdapter
-import com.example.pain.presentation.components.TaskClickListener
-import com.example.pain.presentation.components.TaskViewModelFactory
-import com.example.pain.presentation.components.TaskViewModel
+import com.example.pain.presentation.components.*
 
 class CompletedTasks : Fragment(), TaskClickListener {
     private lateinit var binding: FragmentCompletedTasksBinding
@@ -30,7 +26,7 @@ class CompletedTasks : Fragment(), TaskClickListener {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentCompletedTasksBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -45,15 +41,15 @@ class CompletedTasks : Fragment(), TaskClickListener {
         }
     }
 
-    override fun editTask(task: Task) {
+    override fun editTask(task: TaskViewData) {
         NewTaskSheet(task).show(parentFragmentManager, "newTaskTag")
     }
 
-    override fun completeTask(task: Task) {
+    override fun completeTask(task: TaskViewData) {
         taskViewModel.setCompleted(task)
     }
 
-    override fun favouriteTask(task: Task) {
+    override fun favouriteTask(task: TaskViewData) {
         taskViewModel.setFavourited(task)
     }
 }

@@ -6,7 +6,6 @@ import androidx.activity.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.example.pain.TaskApp
 import com.example.pain.databinding.ActivityMainBinding
-import com.example.pain.data.Task
 import com.example.pain.presentation.components.*
 import com.google.android.material.tabs.TabLayout
 
@@ -54,15 +53,15 @@ class MainActivity : AppCompatActivity(), TaskClickListener {
         }
     }
 
-    override fun editTask(task: Task) {
+    override fun editTask(task: TaskViewData) {
         NewTaskSheet(task).show(supportFragmentManager, "newTaskTag")
     }
 
-    override fun completeTask(task: Task) {
+    override fun completeTask(task: TaskViewData) {
         taskViewModel.setCompleted(task)
     }
 
-    override fun favouriteTask(task: Task) {
+    override fun favouriteTask(task: TaskViewData) {
         taskViewModel.setFavourited(task)
     }
 }

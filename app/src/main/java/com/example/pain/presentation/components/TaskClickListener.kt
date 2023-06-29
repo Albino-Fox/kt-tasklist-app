@@ -1,9 +1,7 @@
 package com.example.pain.presentation.components
 
-import com.example.pain.data.Task
-
 interface TaskClickListener {
-    fun editTask(task: Task)
-    fun completeTask(task: Task)
-    fun favouriteTask(task: Task)
+    fun editTask(task: TaskViewData)
+    fun completeTask(task: TaskViewData)
+    fun favouriteTask(task: TaskViewData)
 }

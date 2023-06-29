@@ -13,8 +13,7 @@ import androidx.fragment.app.viewModels
 import com.example.pain.R
 import com.example.pain.TaskApp
 import com.example.pain.databinding.FragmentNewTaskSheetBinding
-import com.example.pain.data.Task
-import com.example.pain.domain.TaskUtils
+import com.example.pain.presentation.components.TaskViewData
 import com.example.pain.presentation.components.TaskViewModelFactory
 import com.example.pain.presentation.components.TaskViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -22,7 +21,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import java.time.LocalDateTime
 
-class NewTaskSheet(var task: Task?) : BottomSheetDialogFragment() {
+class NewTaskSheet(var task: TaskViewData?) : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentNewTaskSheetBinding
     private val taskViewModel: TaskViewModel by viewModels {
         TaskViewModelFactory((requireActivity().application as TaskApp).repo)
@@ -51,8 +50,8 @@ class NewTaskSheet(var task: Task?) : BottomSheetDialogFragment() {
             binding.name.text = editable.newEditable(task!!.name)
             binding.description.text = editable.newEditable(task!!.description)
 
-            if (TaskUtils.dueDateTime(task!!) != null) {
-                dueDateTime = TaskUtils.dueDateTime(task!!)!!
+            if (task!!.dueDateTime != null) {
+                dueDateTime = task!!.dueDateTime!!
                 updateTimeButtonText()
             }
         }
