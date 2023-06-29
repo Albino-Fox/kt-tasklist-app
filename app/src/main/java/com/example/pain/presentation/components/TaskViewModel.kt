@@ -7,7 +7,6 @@ import com.example.pain.data.Task
 import com.example.pain.domain.useCases.*
 import kotlinx.coroutines.launch
 import java.time.LocalDateTime
-import java.time.LocalTime
 
 class TaskViewModel(private val repo: TaskRepo): ViewModel() {
     private val addTaskUseCase = AddTaskUseCase(repo)
@@ -33,16 +32,16 @@ class TaskViewModel(private val repo: TaskRepo): ViewModel() {
         updateTaskUseCase.execute(task, binding, dueDateTime)
     }
 
+    fun deleteTask(task: Task) = viewModelScope.launch {
+        deleteTaskUseCase.execute(task)
+    }
+
     fun setCompleted(task: Task) = viewModelScope.launch {
         changeCompletionState.execute(task)
     }
 
     fun setFavourited(task: Task) = viewModelScope.launch{
         changeFavouriteState.execute(task)
-    }
-
-    fun deleteTask(task: Task) = viewModelScope.launch {
-        deleteTaskUseCase.execute(task)
     }
 }
 

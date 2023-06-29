@@ -4,7 +4,6 @@ import com.example.pain.databinding.FragmentNewTaskSheetBinding
 import com.example.pain.domain.TaskRepo
 import com.example.pain.data.Task
 import java.time.LocalDateTime
-import java.time.LocalTime
 
 class UpdateTaskUseCase(
     private val repo: TaskRepo
@@ -13,7 +12,7 @@ class UpdateTaskUseCase(
         val name = binding.name.text.toString()
         if (name.isBlank()) return
         val desc = binding.desc.text.toString()
-        val dueDateTimeString = if (dueDateTime == null) null else Task.dateTimeFormatter.format(dueDateTime)
+        val dueDateTimeString = if (dueDateTime != null) Task.dateTimeFormatter.format(dueDateTime) else null
 
         task.name = name
         task.desc = desc

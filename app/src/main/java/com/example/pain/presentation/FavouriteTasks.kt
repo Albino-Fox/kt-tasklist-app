@@ -30,7 +30,7 @@ class FavouriteTasks : Fragment(), TaskClickListener {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentFavouriteTasksBinding.inflate(inflater, container, false)
         return binding.root
     }

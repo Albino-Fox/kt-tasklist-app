@@ -89,11 +89,11 @@ class NewTaskSheet(var task: Task?) : BottomSheetDialogFragment() {
                 dueDateTime = LocalDateTime.of(year, month + 1, dayOfMonth, hour, minute)
                 updateTimeButtonText()
             }, dueDateTime!!.hour, dueDateTime!!.minute, true)
-            timePickerDialog.setTitle("Set Time")
+            timePickerDialog.setTitle("Установите время")
             timePickerDialog.show()
         }, dueDateTime!!.year, dueDateTime!!.monthValue - 1, dueDateTime!!.dayOfMonth)
 
-        datePickerDialog.setTitle("Set Date")
+        datePickerDialog.setTitle("Установите дату")
         datePickerDialog.show()
     }
 

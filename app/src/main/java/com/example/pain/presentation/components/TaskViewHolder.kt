@@ -3,8 +3,8 @@ package com.example.pain.presentation.components
 import android.content.Context
 import android.graphics.Paint
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pain.databinding.TaskItemBinding
 import com.example.pain.data.Task
+import com.example.pain.databinding.TaskItemBinding
 import java.time.format.DateTimeFormatter
 
 class TaskViewHolder(
@@ -40,10 +40,8 @@ class TaskViewHolder(
             clickListener.favouriteTask(task)
         }
 
-        if (task.dueDateTime() != null) {
-            binding.dueDateTime.text = dateTimeFormat.format(task.dueDateTime())
-        } else {
-            binding.dueDateTime.text = ""
-        }
+        binding.dueDateTime.text =
+            if (task.dueDateTime() != null) dateTimeFormat.format(task.dueDateTime()) else ""
+
     }
 }

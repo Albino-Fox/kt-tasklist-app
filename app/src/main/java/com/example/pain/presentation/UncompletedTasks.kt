@@ -30,7 +30,7 @@ class UncompletedTasks : Fragment(), TaskClickListener {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentUncompletedTasksBinding.inflate(inflater, container, false)
         return binding.root
     }

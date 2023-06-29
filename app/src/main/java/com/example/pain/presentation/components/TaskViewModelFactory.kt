@@ -9,8 +9,9 @@ class TaskViewModelFactory(
 ): ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(TaskViewModel::class.java))
+            @Suppress("UNCHECKED_CAST")
             return TaskViewModel(repo) as T
 
-        throw java.lang.IllegalArgumentException("unknown class")
+        throw java.lang.IllegalArgumentException("Unknown ViewModel class")
     }
 }
