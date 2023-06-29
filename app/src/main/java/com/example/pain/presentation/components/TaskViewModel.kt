@@ -10,7 +10,7 @@ import java.time.LocalDateTime
 
 class TaskViewModel(private val repo: TaskRepo): ViewModel() {
     private val taskViewDataMapper = TaskViewDataMapper()
-    private val addTaskUseCase = AddTaskUseCase(repo)
+    private val addTaskUseCase = AddTaskUseCase(repo, taskViewDataMapper)
     private val getTasksUseCase = GetTasksUseCase(repo, taskViewDataMapper)
     private val getUncompletedTasksUseCase = GetUncompletedTasksUseCase(repo, taskViewDataMapper)
     private val getCompletedTasksUseCase = GetCompletedTasksUseCase(repo, taskViewDataMapper)

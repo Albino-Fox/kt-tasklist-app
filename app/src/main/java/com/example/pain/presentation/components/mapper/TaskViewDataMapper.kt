@@ -28,4 +28,14 @@ class TaskViewDataMapper {
             isFavourite = taskViewData.isFavourite
         )
     }
+
+    fun mapToNewTask(taskViewData: TaskViewData): Task {
+        return Task(
+            name = taskViewData.name,
+            description = taskViewData.description,
+            dueDateTimeString = taskViewData.dueDateTime?.let {DateTimeFormatter.ISO_DATE_TIME.format(it)},
+            isCompleted = taskViewData.isCompleted,
+            isFavourite = taskViewData.isFavourite
+        )
+    }
 }
