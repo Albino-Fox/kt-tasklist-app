@@ -54,13 +54,14 @@ class NewTaskSheet(var task: Task?) : BottomSheetDialogFragment() {
             }
         } else {
             binding.deleteButton.isVisible = false
-            binding.taskTitle.text = getString(R.string.newTask)
+            binding.taskTitle.text = getString(R.string.createNewTaskTitle)
         }
 
         binding.deleteButton.setOnClickListener{
             taskViewModel.deleteTask(task!!)
             dismiss()
         }
+
         binding.saveButton.setOnClickListener {
             if (task != null) {
                 taskViewModel.updateTask(task!!, binding, dueDateTime)
@@ -69,7 +70,7 @@ class NewTaskSheet(var task: Task?) : BottomSheetDialogFragment() {
             }
             dismiss()
         }
-        binding.timePickerButton.setOnClickListener{
+        binding.timePickerInput.setOnClickListener{
             if (dueDateTime == null)
                 dueDateTime = LocalDateTime.now()
             openDateTimePicker()
@@ -97,6 +98,7 @@ class NewTaskSheet(var task: Task?) : BottomSheetDialogFragment() {
     }
 
     private fun updateTimeButtonText() {
-        binding.timePickerButton.text = "${dueDateTime!!.toLocalDate()} ${String.format("%02d:%02d", dueDateTime!!.hour, dueDateTime!!.minute)}"
+        val dateTimeText = "${dueDateTime!!.toLocalDate()} ${String.format("%02d:%02d", dueDateTime!!.hour, dueDateTime!!.minute)}"
+        binding.timePickerInput.setText(dateTimeText)
     }
 }
