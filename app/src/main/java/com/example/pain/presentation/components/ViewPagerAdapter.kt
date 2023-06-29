@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.pain.presentation.CompletedTasks
+import com.example.pain.presentation.FavouriteTasks
 import com.example.pain.presentation.UncompletedTasks
 
 class ViewPagerAdapter(
@@ -16,10 +17,11 @@ class ViewPagerAdapter(
     }
 
     override fun createFragment(position: Int) : Fragment {
-        return if (position == 0) {
-            return UncompletedTasks()
-        } else {
-            return CompletedTasks()
+        return when (position) {
+            0 -> UncompletedTasks()
+            1 -> CompletedTasks()
+            2 -> FavouriteTasks()
+            else -> {UncompletedTasks()}
         }
     }
 }

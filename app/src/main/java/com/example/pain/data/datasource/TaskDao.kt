@@ -15,7 +15,7 @@ interface TaskDao {
     @Query("SELECT * FROM task_table WHERE completedDateString IS NOT NULL")
     fun getCompletedTasks() : Flow<List<Task>>
 
-    @Query("SELECT * FROM task_table WHERE isFavourite IS NOT NULL")
+    @Query("SELECT * FROM task_table WHERE isFavourite != 0")
     fun getFavouriteTasks() : Flow<List<Task>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
