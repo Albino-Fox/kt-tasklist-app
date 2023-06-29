@@ -4,7 +4,7 @@ import com.example.pain.domain.TaskRepo
 import com.example.pain.data.Task
 import kotlinx.coroutines.flow.Flow
 
-class GetFavouriteTasks(
+class GetFavouriteTasksUseCase(
     private val repo: TaskRepo
 ) {
     fun execute() : Flow<List<Task>> {

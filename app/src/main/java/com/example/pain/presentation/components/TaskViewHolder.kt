@@ -22,8 +22,8 @@ class TaskViewHolder(
             binding.name.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
         }
 
-        binding.completeButton.setImageResource(task.imageCheckRes())
-        binding.completeButton.setColorFilter(task.imageColor(context))
+        binding.completeButton.setImageResource(task.imageCheckerRes())
+        binding.completeButton.setColorFilter(task.imageCheckerColor(context))
 
 
         binding.completeButton.setOnClickListener{
@@ -34,7 +34,7 @@ class TaskViewHolder(
         }
 
         binding.favouriteButton.setImageResource(task.imageFavRes())
-        binding.favouriteButton.setColorFilter(task.imageColor(context))
+        binding.favouriteButton.setColorFilter(task.imageFavColor(context))
 
         binding.favouriteButton.setOnClickListener{
             clickListener.favouriteTask(task)

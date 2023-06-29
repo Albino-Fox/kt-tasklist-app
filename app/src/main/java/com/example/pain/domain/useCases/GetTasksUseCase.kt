@@ -4,10 +4,10 @@ import com.example.pain.domain.TaskRepo
 import com.example.pain.data.Task
 import kotlinx.coroutines.flow.Flow
 
-class GetCompletedTasks(
+class GetTasksUseCase(
     private val repo: TaskRepo
 ) {
     fun execute() : Flow<List<Task>> {
-        return repo.getCompletedTasks()
+        return repo.getTasks()
     }
 }

@@ -4,7 +4,7 @@ import com.example.pain.domain.TaskRepo
 import com.example.pain.data.Task
 import java.time.LocalDate
 
-class SetCompleted(
+class ChangeCompleteState(
     private val repo: TaskRepo
 ) {
     suspend fun execute(task: Task) {

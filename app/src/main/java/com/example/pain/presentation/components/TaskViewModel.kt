@@ -9,39 +9,39 @@ import kotlinx.coroutines.launch
 import java.time.LocalTime
 
 class TaskViewModel(private val repo: TaskRepo): ViewModel() {
-    private val addTask = AddTask(repo)
-    private val getTasks = GetTasks(repo)
-    private val getUncompletedTasks = GetUncompletedTasks(repo)
-    private val getCompletedTasks = GetCompletedTasks(repo)
-    private val getFavouriteTasks = GetFavouriteTasks(repo)
-    private val updateTask = UpdateTask(repo)
-    private val setCompleted = SetCompleted(repo)
-    private val setFavourited = SetFavourited(repo)
-    private val deleteTask = DeleteTask(repo)
+    private val addTaskUseCase = AddTaskUseCase(repo)
+    private val getTasksUseCase = GetTasksUseCase(repo)
+    private val getUncompletedTasksUseCase = GetUncompletedTasksUseCase(repo)
+    private val getCompletedTasksUseCase = GetCompletedTasksUseCase(repo)
+    private val getFavouriteTasksUseCase = GetFavouriteTasksUseCase(repo)
+    private val updateTaskUseCase = UpdateTaskUseCase(repo)
+    private val changeCompleteState = ChangeCompleteState(repo)
+    private val changeFavouriteState = ChangeFavouriteState(repo)
+    private val deleteTaskUseCase = DeleteTaskUseCase(repo)
 
-    var tasks : LiveData<List<Task>> = getTasks.execute().asLiveData()
-    var uncompletedTasks : LiveData<List<Task>> = getUncompletedTasks.execute().asLiveData()
-    var completedTasks : LiveData<List<Task>> = getCompletedTasks.execute().asLiveData()
-    var favouriteTasks : LiveData<List<Task>> = getFavouriteTasks.execute().asLiveData()
+    var tasks : LiveData<List<Task>> = getTasksUseCase.execute().asLiveData()
+    var uncompletedTasks : LiveData<List<Task>> = getUncompletedTasksUseCase.execute().asLiveData()
+    var completedTasks : LiveData<List<Task>> = getCompletedTasksUseCase.execute().asLiveData()
+    var favouriteTasks : LiveData<List<Task>> = getFavouriteTasksUseCase.execute().asLiveData()
 
     fun addTask(binding: FragmentNewTaskSheetBinding, dueTime: LocalTime?) = viewModelScope.launch {
-        addTask.execute(binding, dueTime)
+        addTaskUseCase.execute(binding, dueTime)
     }
 
     fun updateTask(task: Task, binding: FragmentNewTaskSheetBinding, dueTime: LocalTime?) = viewModelScope.launch {
-        updateTask.execute(task, binding, dueTime)
+        updateTaskUseCase.execute(task, binding, dueTime)
     }
 
     fun setCompleted(task: Task) = viewModelScope.launch {
-        setCompleted.execute(task)
+        changeCompleteState.execute(task)
     }
 
     fun setFavourited(task: Task) = viewModelScope.launch{
-        setFavourited.execute(task)
+        changeFavouriteState.execute(task)
     }
 
     fun deleteTask(task: Task) = viewModelScope.launch {
-        deleteTask.execute(task)
+        deleteTaskUseCase.execute(task)
     }
 }
 
