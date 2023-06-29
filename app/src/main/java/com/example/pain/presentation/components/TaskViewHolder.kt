@@ -11,9 +11,9 @@ class TaskViewHolder(
     private val context: Context,
     private val binding: TaskItemBinding,
     private val clickListener: TaskClickListener
-): RecyclerView.ViewHolder(binding.root) {
+) : RecyclerView.ViewHolder(binding.root) {
 
-    private val timeFormat = DateTimeFormatter.ofPattern("HH:mm")
+    private val dateTimeFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
 
     fun bindTask(task: Task) {
         binding.name.text = task.name
@@ -26,24 +26,24 @@ class TaskViewHolder(
         binding.completeButton.setImageResource(task.imageCheckerRes())
         binding.completeButton.setColorFilter(task.imageCheckerColor(context))
 
-
-        binding.completeButton.setOnClickListener{
+        binding.completeButton.setOnClickListener {
             clickListener.completeTask(task)
         }
-        binding.taskItemContainer.setOnClickListener{
+        binding.taskItemContainer.setOnClickListener {
             clickListener.editTask(task)
         }
 
         binding.favouriteButton.setImageResource(task.imageFavRes())
         binding.favouriteButton.setColorFilter(task.imageFavColor(context))
 
-        binding.favouriteButton.setOnClickListener{
+        binding.favouriteButton.setOnClickListener {
             clickListener.favouriteTask(task)
         }
 
-        if (task.dueTime() != null)
-            binding.dueTime.text = timeFormat.format(task.dueTime())
-        else
-            binding.dueTime.text = ""
+        if (task.dueDateTime() != null) {
+            binding.dueDateTime.text = dateTimeFormat.format(task.dueDateTime())
+        } else {
+            binding.dueDateTime.text = ""
+        }
     }
 }

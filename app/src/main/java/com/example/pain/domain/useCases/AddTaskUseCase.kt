@@ -3,18 +3,18 @@ package com.example.pain.domain.useCases
 import com.example.pain.databinding.FragmentNewTaskSheetBinding
 import com.example.pain.domain.TaskRepo
 import com.example.pain.data.Task
-import java.time.LocalTime
+import java.time.LocalDateTime
 
 class AddTaskUseCase(
     private val repo: TaskRepo
 ) {
-    suspend fun execute(binding: FragmentNewTaskSheetBinding, dueTime: LocalTime?) {
+    suspend fun execute(binding: FragmentNewTaskSheetBinding, dueDateTime: LocalDateTime?) {
         val name = binding.name.text.toString()
         if (name.isBlank()) return
         val desc = binding.desc.text.toString()
-        val dueTimeString = if (dueTime == null) null else Task.timeFormatter.format(dueTime)
+        val dueDateTimeString = if (dueDateTime == null) null else Task.dateTimeFormatter.format(dueDateTime)
 
-        val newTask = Task(name, desc, dueTimeString, isCompleted = false, isFavourite = false)
+        val newTask = Task(name, desc, dueDateTimeString, isCompleted = false, isFavourite = false)
         repo.insertTask(newTask)
     }
 }

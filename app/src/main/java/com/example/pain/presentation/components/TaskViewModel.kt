@@ -6,6 +6,7 @@ import com.example.pain.domain.TaskRepo
 import com.example.pain.data.Task
 import com.example.pain.domain.useCases.*
 import kotlinx.coroutines.launch
+import java.time.LocalDateTime
 import java.time.LocalTime
 
 class TaskViewModel(private val repo: TaskRepo): ViewModel() {
@@ -24,12 +25,12 @@ class TaskViewModel(private val repo: TaskRepo): ViewModel() {
     var completedTasks : LiveData<List<Task>> = getCompletedTasksUseCase.execute().asLiveData()
     var favouriteTasks : LiveData<List<Task>> = getFavouriteTasksUseCase.execute().asLiveData()
 
-    fun addTask(binding: FragmentNewTaskSheetBinding, dueTime: LocalTime?) = viewModelScope.launch {
-        addTaskUseCase.execute(binding, dueTime)
+    fun addTask(binding: FragmentNewTaskSheetBinding, dueDateTime: LocalDateTime?) = viewModelScope.launch {
+        addTaskUseCase.execute(binding, dueDateTime)
     }
 
-    fun updateTask(task: Task, binding: FragmentNewTaskSheetBinding, dueTime: LocalTime?) = viewModelScope.launch {
-        updateTaskUseCase.execute(task, binding, dueTime)
+    fun updateTask(task: Task, binding: FragmentNewTaskSheetBinding, dueDateTime: LocalDateTime?) = viewModelScope.launch {
+        updateTaskUseCase.execute(task, binding, dueDateTime)
     }
 
     fun setCompleted(task: Task) = viewModelScope.launch {

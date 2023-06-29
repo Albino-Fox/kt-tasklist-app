@@ -6,20 +6,19 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.pain.R
-import java.time.LocalDate
-import java.time.LocalTime
+import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 @Entity(tableName = "task_table")
-data class Task (
+data class Task(
     @ColumnInfo(name = "name")
     var name: String,
 
     @ColumnInfo(name = "desc")
     var desc: String,
 
-    @ColumnInfo(name = "dueTime")
-    var dueTimeString: String?,
+    @ColumnInfo(name = "dueDateTime")
+    var dueDateTimeString: String?,
 
     @ColumnInfo(name = "isCompleted")
     var isCompleted: Boolean,
@@ -31,7 +30,8 @@ data class Task (
     var id: Int = 0
 ) {
 
-    fun dueTime(): LocalTime? = if (dueTimeString == null) null else LocalTime.parse(dueTimeString, timeFormatter)
+    fun dueDateTime(): LocalDateTime? =
+        if (dueDateTimeString == null) null else LocalDateTime.parse(dueDateTimeString, dateTimeFormatter)
 
     fun imageCheckerRes(): Int = if (isCompleted) R.drawable.check_24 else R.drawable.uncheck_24
     fun imageCheckerColor(context: Context): Int = if (isCompleted) green(context) else black(context)
@@ -44,7 +44,6 @@ data class Task (
     private fun gold(context: Context) = ContextCompat.getColor(context, R.color.gold)
 
     companion object {
-        val timeFormatter: DateTimeFormatter = DateTimeFormatter.ISO_TIME
-        val dateFormatter: DateTimeFormatter = DateTimeFormatter.ISO_DATE
+        val dateTimeFormatter: DateTimeFormatter = DateTimeFormatter.ISO_DATE_TIME
     }
 }

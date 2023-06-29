@@ -1,5 +1,6 @@
 package com.example.pain.presentation
 
+import android.app.DatePickerDialog
 import android.app.Dialog
 import android.app.TimePickerDialog
 import android.os.Bundle
@@ -18,14 +19,14 @@ import com.example.pain.presentation.components.TaskViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import java.time.LocalTime
+import java.time.LocalDateTime
 
 class NewTaskSheet(var task: Task?) : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentNewTaskSheetBinding
     private val taskViewModel: TaskViewModel by viewModels {
         TaskViewModelFactory((requireActivity().application as TaskApp).repo)
     }
-    private var dueTime: LocalTime? = null
+    private var dueDateTime: LocalDateTime? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,8 +48,8 @@ class NewTaskSheet(var task: Task?) : BottomSheetDialogFragment() {
             binding.name.text = editable.newEditable(task!!.name)
             binding.desc.text = editable.newEditable(task!!.desc)
 
-            if (task!!.dueTime() != null) {
-                dueTime = task!!.dueTime()!!
+            if (task!!.dueDateTime() != null) {
+                dueDateTime = task!!.dueDateTime()!!
                 updateTimeButtonText()
             }
         } else {
@@ -62,17 +63,16 @@ class NewTaskSheet(var task: Task?) : BottomSheetDialogFragment() {
         }
         binding.saveButton.setOnClickListener {
             if (task != null) {
-                taskViewModel.updateTask(task!!, binding, dueTime)
+                taskViewModel.updateTask(task!!, binding, dueDateTime)
             } else {
-                taskViewModel.addTask(binding, dueTime)
+                taskViewModel.addTask(binding, dueDateTime)
             }
             dismiss()
         }
         binding.timePickerButton.setOnClickListener{
-
-            if (dueTime == null)
-                dueTime = LocalTime.now()
-            openTimePicker()
+            if (dueDateTime == null)
+                dueDateTime = LocalDateTime.now()
+            openDateTimePicker()
         }
     }
 
@@ -82,17 +82,21 @@ class NewTaskSheet(var task: Task?) : BottomSheetDialogFragment() {
         return dialog
     }
 
-    private fun openTimePicker() {
-        val listener = TimePickerDialog.OnTimeSetListener{ _, selectedHour, selectedMinute ->
-            dueTime = LocalTime.of(selectedHour, selectedMinute)
-            updateTimeButtonText()
-        }
-        val dialog = TimePickerDialog(activity, listener, dueTime!!.hour, dueTime!!.minute, true)
-        dialog.setTitle("Установить время")
-        dialog.show()
+    private fun openDateTimePicker() {
+        val datePickerDialog = DatePickerDialog(requireContext(), { _, year, month, dayOfMonth ->
+            val timePickerDialog = TimePickerDialog(requireContext(), { _, hour, minute ->
+                dueDateTime = LocalDateTime.of(year, month + 1, dayOfMonth, hour, minute)
+                updateTimeButtonText()
+            }, dueDateTime!!.hour, dueDateTime!!.minute, true)
+            timePickerDialog.setTitle("Set Time")
+            timePickerDialog.show()
+        }, dueDateTime!!.year, dueDateTime!!.monthValue - 1, dueDateTime!!.dayOfMonth)
+
+        datePickerDialog.setTitle("Set Date")
+        datePickerDialog.show()
     }
 
     private fun updateTimeButtonText() {
-        binding.timePickerButton.text = String.format("%02d:%02d", dueTime!!.hour, dueTime!!.minute)
+        binding.timePickerButton.text = "${dueDateTime!!.toLocalDate()} ${String.format("%02d:%02d", dueDateTime!!.hour, dueDateTime!!.minute)}"
     }
 }
