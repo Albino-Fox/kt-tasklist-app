@@ -5,12 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.pain.R
 import com.example.pain.TaskApp
-import com.example.pain.data.model.Task
+import com.example.pain.data.Task
 import com.example.pain.databinding.FragmentFavouriteTasksBinding
 import com.example.pain.presentation.components.TaskAdapter
 import com.example.pain.presentation.components.TaskClickListener

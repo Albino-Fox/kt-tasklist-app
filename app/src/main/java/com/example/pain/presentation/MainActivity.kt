@@ -6,7 +6,7 @@ import androidx.activity.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.example.pain.TaskApp
 import com.example.pain.databinding.ActivityMainBinding
-import com.example.pain.data.model.Task
+import com.example.pain.data.Task
 import com.example.pain.presentation.components.*
 import com.google.android.material.tabs.TabLayout
 

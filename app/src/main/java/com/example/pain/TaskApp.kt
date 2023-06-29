@@ -1,8 +1,8 @@
 package com.example.pain
 
 import android.app.Application
-import com.example.pain.data.datasource.TaskDatabase
-import com.example.pain.data.repo.TaskRepoImpl
+import com.example.pain.data.TaskDatabase
+import com.example.pain.data.TaskRepoImpl
 
 class TaskApp: Application() {
     private val database by lazy { TaskDatabase.getDatabase(this) }

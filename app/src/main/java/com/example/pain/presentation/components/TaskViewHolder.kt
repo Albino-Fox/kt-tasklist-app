@@ -3,13 +3,13 @@ package com.example.pain.presentation.components
 import android.content.Context
 import android.graphics.Paint
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pain.databinding.TaskCellBinding
-import com.example.pain.data.model.Task
+import com.example.pain.databinding.TaskItemBinding
+import com.example.pain.data.Task
 import java.time.format.DateTimeFormatter
 
 class TaskViewHolder(
     private val context: Context,
-    private val binding: TaskCellBinding,
+    private val binding: TaskItemBinding,
     private val clickListener: TaskClickListener
 ): RecyclerView.ViewHolder(binding.root) {
 
@@ -28,7 +28,7 @@ class TaskViewHolder(
         binding.completeButton.setOnClickListener{
             clickListener.completeTask(task)
         }
-        binding.taskCellContainer.setOnClickListener{
+        binding.taskItemContainer.setOnClickListener{
             clickListener.editTask(task)
         }
 

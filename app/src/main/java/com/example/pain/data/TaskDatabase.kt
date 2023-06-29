@@ -1,8 +1,7 @@
-package com.example.pain.data.datasource
+package com.example.pain.data
 
 import android.content.Context
 import androidx.room.*
-import com.example.pain.data.model.Task
 
 @Database(entities = [Task::class], version = 1, exportSchema = false)
 public abstract class TaskDatabase: RoomDatabase() {

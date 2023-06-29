@@ -1,7 +1,7 @@
 package com.example.pain.domain.useCases
 
 import com.example.pain.domain.TaskRepo
-import com.example.pain.data.model.Task
+import com.example.pain.data.Task
 import java.time.LocalDate
 
 class SetCompleted(

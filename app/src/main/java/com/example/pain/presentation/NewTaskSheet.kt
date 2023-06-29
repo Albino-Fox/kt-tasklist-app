@@ -9,11 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import com.example.pain.R
 import com.example.pain.TaskApp
 import com.example.pain.databinding.FragmentNewTaskSheetBinding
-import com.example.pain.data.model.Task
+import com.example.pain.data.Task
 import com.example.pain.presentation.components.TaskViewModelFactory
 import com.example.pain.presentation.components.TaskViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior

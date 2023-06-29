@@ -1,7 +1,6 @@
-package com.example.pain.data.datasource
+package com.example.pain.data
 
 import androidx.room.*
-import com.example.pain.data.model.Task
 import kotlinx.coroutines.flow.Flow
 
 @Dao

@@ -1,6 +1,6 @@
 package com.example.pain.presentation.components
 
-import com.example.pain.data.model.Task
+import com.example.pain.data.Task
 
 interface TaskClickListener {
     fun editTask(task: Task)

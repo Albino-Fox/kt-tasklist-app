@@ -3,7 +3,7 @@ package com.example.pain.presentation.components
 import androidx.lifecycle.*
 import com.example.pain.databinding.FragmentNewTaskSheetBinding
 import com.example.pain.domain.TaskRepo
-import com.example.pain.data.model.Task
+import com.example.pain.data.Task
 import com.example.pain.domain.useCases.*
 import kotlinx.coroutines.launch
 import java.time.LocalTime

@@ -1,6 +1,6 @@
 package com.example.pain.domain
 
-import com.example.pain.data.model.Task
+import com.example.pain.data.Task
 import kotlinx.coroutines.flow.Flow
 
 interface TaskRepo {

@@ -1,4 +1,4 @@
-package com.example.pain.data.model
+package com.example.pain.data
 
 import android.content.Context
 import androidx.core.content.ContextCompat
