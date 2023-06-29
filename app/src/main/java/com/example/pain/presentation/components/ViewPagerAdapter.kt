@@ -21,7 +21,7 @@ class ViewPagerAdapter(
             0 -> UncompletedTasks()
             1 -> CompletedTasks()
             2 -> FavouriteTasks()
-            else -> {UncompletedTasks()}
+            else -> throw IllegalArgumentException("Invalid position: $position")
         }
     }
 }
