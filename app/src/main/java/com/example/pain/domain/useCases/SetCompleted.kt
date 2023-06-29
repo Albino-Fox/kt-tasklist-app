@@ -12,7 +12,6 @@ class SetCompleted(
             task.completedDateString = Task.dateFormatter.format(LocalDate.now())
         } else {
             task.completedDateString = null
-            task.dueTimeString = null
         }
 
         repo.updateTask(task)

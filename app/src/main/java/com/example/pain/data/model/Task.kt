@@ -24,6 +24,9 @@ data class Task (
     @ColumnInfo(name = "completedDateString")
     var completedDateString: String?,
 
+    @ColumnInfo(name = "isFavourite")
+    var isFavourite: Boolean,
+
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0
 ) {
@@ -33,6 +36,7 @@ data class Task (
     fun dueTime(): LocalTime? = if (dueTimeString == null) null else LocalTime.parse(dueTimeString, timeFormatter)
 
     fun isCompleted() = completedDate() != null
+    fun checkIfIsFavourite() = isFavourite
     fun imageRes(): Int = if (isCompleted()) R.drawable.check_24 else R.drawable.uncheck_24
     fun imageColor(context: Context): Int = if (isCompleted()) green(context) else black(context)
 

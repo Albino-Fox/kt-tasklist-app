@@ -14,7 +14,7 @@ import com.example.pain.R
 import com.example.pain.TaskApp
 import com.example.pain.databinding.FragmentNewTaskSheetBinding
 import com.example.pain.data.model.Task
-import com.example.pain.presentation.components.TaskModelFactory
+import com.example.pain.presentation.components.TaskViewModelFactory
 import com.example.pain.presentation.components.TaskViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -24,7 +24,7 @@ import java.time.LocalTime
 class NewTaskSheet(var task: Task?) : BottomSheetDialogFragment() {
     private lateinit var binding: FragmentNewTaskSheetBinding
     private val taskViewModel: TaskViewModel by viewModels {
-        TaskModelFactory((requireActivity().application as TaskApp).repo)
+        TaskViewModelFactory((requireActivity().application as TaskApp).repo)
     }
     private var dueTime: LocalTime? = null
 

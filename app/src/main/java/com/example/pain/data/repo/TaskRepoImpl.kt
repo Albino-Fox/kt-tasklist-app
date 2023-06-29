@@ -20,6 +20,10 @@ class TaskRepoImpl(
         return dao.getCompletedTasks()
     }
 
+    override fun getFavouriteTasks() : Flow<List<Task>> {
+        return dao.getFavouriteTasks()
+    }
+
     override suspend fun insertTask(task: Task) {
         dao.insertTask(task)
     }

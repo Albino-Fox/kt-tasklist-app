@@ -11,15 +11,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pain.R
 import com.example.pain.TaskApp
 import com.example.pain.data.model.Task
-import com.example.pain.databinding.FragmentNewTaskSheetBinding
-import com.example.pain.databinding.FragmentUncompletedTasksBinding
+import com.example.pain.databinding.FragmentFavouriteTasksBinding
 import com.example.pain.presentation.components.TaskAdapter
 import com.example.pain.presentation.components.TaskClickListener
 import com.example.pain.presentation.components.TaskViewModelFactory
 import com.example.pain.presentation.components.TaskViewModel
 
-class UncompletedTasks : Fragment(), TaskClickListener {
-    private lateinit var binding: FragmentUncompletedTasksBinding
+class FavouriteTasks : Fragment(), TaskClickListener {
+    private lateinit var binding: FragmentFavouriteTasksBinding
     private val taskViewModel: TaskViewModel by viewModels {
         TaskViewModelFactory((requireActivity().application as TaskApp).repo)
     }
@@ -34,13 +33,13 @@ class UncompletedTasks : Fragment(), TaskClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentUncompletedTasksBinding.inflate(inflater, container, false)
+        binding = FragmentFavouriteTasksBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     private fun setRecyclerView() {
         val fragment = this
-        taskViewModel.uncompletedTasks.observe(this) {
+        taskViewModel.favouriteTasks.observe(this) {
             binding.taskListRecylerView.apply {
                 layoutManager = LinearLayoutManager(activity)
                 adapter = TaskAdapter(it, fragment)

@@ -15,13 +15,13 @@ import com.example.pain.databinding.FragmentNewTaskSheetBinding
 import com.example.pain.databinding.FragmentUncompletedTasksBinding
 import com.example.pain.presentation.components.TaskAdapter
 import com.example.pain.presentation.components.TaskClickListener
-import com.example.pain.presentation.components.TaskModelFactory
+import com.example.pain.presentation.components.TaskViewModelFactory
 import com.example.pain.presentation.components.TaskViewModel
 
 class CompletedTasks : Fragment(), TaskClickListener {
     private lateinit var binding: FragmentUncompletedTasksBinding
     private val taskViewModel: TaskViewModel by viewModels {
-        TaskModelFactory((requireActivity().application as TaskApp).repo)
+        TaskViewModelFactory((requireActivity().application as TaskApp).repo)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

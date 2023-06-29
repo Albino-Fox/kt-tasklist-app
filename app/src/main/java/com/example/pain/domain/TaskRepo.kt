@@ -10,6 +10,8 @@ interface TaskRepo {
 
     fun getCompletedTasks() : Flow<List<Task>>
 
+    fun getFavouriteTasks() : Flow<List<Task>>
+
     suspend fun insertTask(task: Task)
 
     suspend fun updateTask(task: Task)

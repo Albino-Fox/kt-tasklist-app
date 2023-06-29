@@ -14,7 +14,7 @@ class AddTask(
         val desc = binding.desc.text.toString()
         val dueTimeString = if (dueTime == null) null else Task.timeFormatter.format(dueTime)
 
-        val newTask = Task(name, desc, dueTimeString, null)
+        val newTask = Task(name, desc, dueTimeString, null, false)
         repo.insertTask(newTask)
     }
 }

@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.pain.domain.TaskRepo
 
-class TaskModelFactory(
+class TaskViewModelFactory(
     private val repo: TaskRepo
 ): ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

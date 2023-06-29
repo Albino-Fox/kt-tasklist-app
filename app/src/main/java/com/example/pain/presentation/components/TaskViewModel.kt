@@ -13,6 +13,7 @@ class TaskViewModel(private val repo: TaskRepo): ViewModel() {
     private val getTasks = GetTasks(repo)
     private val getUncompletedTasks = GetUncompletedTasks(repo)
     private val getCompletedTasks = GetCompletedTasks(repo)
+    private val getFavouriteTasks = GetFavouriteTasks(repo)
     private val updateTask = UpdateTask(repo)
     private val setCompleted = SetCompleted(repo)
     private val deleteTask = DeleteTask(repo)
@@ -20,6 +21,7 @@ class TaskViewModel(private val repo: TaskRepo): ViewModel() {
     var tasks : LiveData<List<Task>> = getTasks.execute().asLiveData()
     var uncompletedTasks : LiveData<List<Task>> = getUncompletedTasks.execute().asLiveData()
     var completedTasks : LiveData<List<Task>> = getCompletedTasks.execute().asLiveData()
+    var favouriteTasks : LiveData<List<Task>> = getFavouriteTasks.execute().asLiveData()
 
     fun addTask(binding: FragmentNewTaskSheetBinding, dueTime: LocalTime?) = viewModelScope.launch {
         addTask.execute(binding, dueTime)

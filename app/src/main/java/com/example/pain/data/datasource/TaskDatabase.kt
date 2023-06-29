@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.*
 import com.example.pain.data.model.Task
 
-@Database(entities = [Task::class], version = 2, exportSchema = false)
+@Database(entities = [Task::class], version = 1, exportSchema = false)
 public abstract class TaskDatabase: RoomDatabase() {
     abstract fun taskDao(): TaskDao
 
@@ -18,7 +18,7 @@ public abstract class TaskDatabase: RoomDatabase() {
                     context.applicationContext,
                     TaskDatabase::class.java,
                     "task_db"
-                ).build()
+                ).fallbackToDestructiveMigration().build()
                 INSTANCE = instance
                 instance
             }

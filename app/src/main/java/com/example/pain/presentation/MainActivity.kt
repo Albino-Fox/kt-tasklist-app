@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity(), TaskClickListener {
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: ViewPagerAdapter
     private val taskViewModel: TaskViewModel by viewModels {
-        TaskModelFactory((application as TaskApp).repo)
+        TaskViewModelFactory((application as TaskApp).repo)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity(), TaskClickListener {
 
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Незавершённые задачи"))
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Завершённые задачи"))
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Избранные"))
 
         binding.viewPager.adapter = adapter
 
