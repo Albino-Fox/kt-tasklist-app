@@ -22,7 +22,7 @@ class TaskViewHolder(
             binding.name.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
         }
 
-        binding.completeButton.setImageResource(task.imageRes())
+        binding.completeButton.setImageResource(task.imageCheckRes())
         binding.completeButton.setColorFilter(task.imageColor(context))
 
         binding.completeButton.setOnClickListener{

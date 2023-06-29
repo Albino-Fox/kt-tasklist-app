@@ -36,8 +36,8 @@ data class Task (
     fun dueTime(): LocalTime? = if (dueTimeString == null) null else LocalTime.parse(dueTimeString, timeFormatter)
 
     fun isCompleted() = completedDate() != null
-    fun checkIfIsFavourite() = isFavourite
-    fun imageRes(): Int = if (isCompleted()) R.drawable.check_24 else R.drawable.uncheck_24
+    fun imageCheckRes(): Int = if (isCompleted()) R.drawable.check_24 else R.drawable.uncheck_24
+    fun imageFavRes(): Int = if (isFavourite) R.drawable.star_full_24 else R.drawable.star_empty_24
     fun imageColor(context: Context): Int = if (isCompleted()) green(context) else black(context)
 
     private fun green(context: Context) = ContextCompat.getColor(context, R.color.green_500)
