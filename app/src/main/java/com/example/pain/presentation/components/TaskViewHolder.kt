@@ -25,11 +25,19 @@ class TaskViewHolder(
         binding.completeButton.setImageResource(task.imageCheckRes())
         binding.completeButton.setColorFilter(task.imageColor(context))
 
+
         binding.completeButton.setOnClickListener{
             clickListener.completeTask(task)
         }
         binding.taskItemContainer.setOnClickListener{
             clickListener.editTask(task)
+        }
+
+        binding.favouriteButton.setImageResource(task.imageFavRes())
+        binding.favouriteButton.setColorFilter(task.imageColor(context))
+
+        binding.favouriteButton.setOnClickListener{
+            clickListener.favouriteTask(task)
         }
 
         if (task.dueTime() != null)

@@ -16,6 +16,7 @@ class TaskViewModel(private val repo: TaskRepo): ViewModel() {
     private val getFavouriteTasks = GetFavouriteTasks(repo)
     private val updateTask = UpdateTask(repo)
     private val setCompleted = SetCompleted(repo)
+    private val setFavourited = SetFavourited(repo)
     private val deleteTask = DeleteTask(repo)
 
     var tasks : LiveData<List<Task>> = getTasks.execute().asLiveData()
@@ -33,6 +34,10 @@ class TaskViewModel(private val repo: TaskRepo): ViewModel() {
 
     fun setCompleted(task: Task) = viewModelScope.launch {
         setCompleted.execute(task)
+    }
+
+    fun setFavourited(task: Task) = viewModelScope.launch{
+        setFavourited.execute(task)
     }
 
     fun deleteTask(task: Task) = viewModelScope.launch {

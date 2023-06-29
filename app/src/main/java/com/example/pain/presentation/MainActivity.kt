@@ -66,4 +66,8 @@ class MainActivity : AppCompatActivity(), TaskClickListener {
     override fun completeTask(task: Task) {
         taskViewModel.setCompleted(task)
     }
+
+    override fun favouriteTask(task: Task) {
+        taskViewModel.setFavourited(task)
+    }
 }
