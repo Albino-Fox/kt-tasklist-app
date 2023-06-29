@@ -5,6 +5,7 @@ import android.graphics.Paint
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pain.data.Task
 import com.example.pain.databinding.TaskItemBinding
+import com.example.pain.domain.TaskUtils
 import java.time.format.DateTimeFormatter
 
 class TaskViewHolder(
@@ -23,8 +24,8 @@ class TaskViewHolder(
             binding.name.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
         }
 
-        binding.completeButton.setImageResource(task.imageCheckerRes())
-        binding.completeButton.setColorFilter(task.imageCheckerColor(context))
+        binding.completeButton.setImageResource(TaskUtils.imageCheckerRes(task))
+        binding.completeButton.setColorFilter(TaskUtils.imageCheckerColor(task, context))
 
         binding.completeButton.setOnClickListener {
             clickListener.completeTask(task)
@@ -33,14 +34,14 @@ class TaskViewHolder(
             clickListener.editTask(task)
         }
 
-        binding.favouriteButton.setImageResource(task.imageFavRes())
-        binding.favouriteButton.setColorFilter(task.imageFavColor(context))
+        binding.favouriteButton.setImageResource(TaskUtils.imageFavRes(task))
+        binding.favouriteButton.setColorFilter(TaskUtils.imageFavColor(task, context))
 
         binding.favouriteButton.setOnClickListener {
             clickListener.favouriteTask(task)
         }
 
         binding.dueDateTime.text =
-            if (task.dueDateTime() != null) dateTimeFormat.format(task.dueDateTime()) else ""
+            if (TaskUtils.dueDateTime(task) != null) dateTimeFormat.format(TaskUtils.dueDateTime(task)) else ""
     }
 }

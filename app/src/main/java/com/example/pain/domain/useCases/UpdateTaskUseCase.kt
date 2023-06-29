@@ -3,6 +3,7 @@ package com.example.pain.domain.useCases
 import com.example.pain.databinding.FragmentNewTaskSheetBinding
 import com.example.pain.domain.TaskRepo
 import com.example.pain.data.Task
+import com.example.pain.domain.TaskUtils
 import java.time.LocalDateTime
 
 class UpdateTaskUseCase(
@@ -12,7 +13,7 @@ class UpdateTaskUseCase(
         val name = binding.name.text.toString()
         if (name.isBlank()) return
         val desc = binding.description.text.toString()
-        val dueDateTimeString = if (dueDateTime != null) Task.dateTimeFormatter.format(dueDateTime) else null
+        val dueDateTimeString = dueDateTime?.let { TaskUtils.formatDateTime(it) }
 
         task.name = name
         task.description = desc
