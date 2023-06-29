@@ -11,7 +11,7 @@ class UpdateTask(
     suspend fun execute(task: Task, binding: FragmentNewTaskSheetBinding, dueTime: LocalTime?) {
         val name = binding.name.text.toString()
         if (name.isBlank()) return
-        val desc = binding.name.text.toString()
+        val desc = binding.desc.text.toString()
         val dueTimeString = if (dueTime == null) null else Task.timeFormatter.format(dueTime)
 
         task.name = name

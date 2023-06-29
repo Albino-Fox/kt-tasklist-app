@@ -14,4 +14,6 @@
     <string name="editTask">Редактировать задачу</string>
     <string name="appbar_scrolling_view_behavior">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
     <string name="add_task_button">Добавить задачу</string>
+    <string name="task_description_placeholder">BottomText</string>
+    <string name="favourite">favouriteButton</string>
 </resources>
