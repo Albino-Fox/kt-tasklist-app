@@ -14,8 +14,8 @@ data class Task(
     @ColumnInfo(name = "name")
     var name: String,
 
-    @ColumnInfo(name = "desc")
-    var desc: String,
+    @ColumnInfo(name = "description")
+    var description: String,
 
     @ColumnInfo(name = "dueDateTime")
     var dueDateTimeString: String?,

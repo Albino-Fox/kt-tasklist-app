@@ -17,7 +17,7 @@ class TaskViewHolder(
 
     fun bindTask(task: Task) {
         binding.name.text = task.name
-        binding.desc.text = task.desc
+        binding.description.text = task.description
 
         if (task.isCompleted) {
             binding.name.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
@@ -42,6 +42,5 @@ class TaskViewHolder(
 
         binding.dueDateTime.text =
             if (task.dueDateTime() != null) dateTimeFormat.format(task.dueDateTime()) else ""
-
     }
 }

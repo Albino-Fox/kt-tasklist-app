@@ -40,21 +40,21 @@ class NewTaskSheet(var task: Task?) : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         val activity = requireActivity()
 
-        if (task != null) {
+        if (task == null) {
+            binding.deleteButton.isVisible = false
+            binding.taskTitle.text = getString(R.string.createNewTaskTitle)
+        } else {
             binding.taskTitle.text = getString(R.string.editTask)
 
             val editable = Editable.Factory.getInstance()
 
             binding.name.text = editable.newEditable(task!!.name)
-            binding.desc.text = editable.newEditable(task!!.desc)
+            binding.description.text = editable.newEditable(task!!.description)
 
             if (task!!.dueDateTime() != null) {
                 dueDateTime = task!!.dueDateTime()!!
                 updateTimeButtonText()
             }
-        } else {
-            binding.deleteButton.isVisible = false
-            binding.taskTitle.text = getString(R.string.createNewTaskTitle)
         }
 
         binding.deleteButton.setOnClickListener{

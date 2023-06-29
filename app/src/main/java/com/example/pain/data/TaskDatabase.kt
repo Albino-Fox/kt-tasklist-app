@@ -3,7 +3,7 @@ package com.example.pain.data
 import android.content.Context
 import androidx.room.*
 
-@Database(entities = [Task::class], version = 4, exportSchema = false)
+@Database(entities = [Task::class], version = 5, exportSchema = false)
 public abstract class TaskDatabase: RoomDatabase() {
     abstract fun taskDao(): TaskDao
 

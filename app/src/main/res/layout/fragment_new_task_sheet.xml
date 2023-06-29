@@ -71,7 +71,7 @@
             android:layout_height="match_parent"
             android:maxLines="2"
             android:ellipsize="end"
-            android:id="@+id/desc"
+            android:id="@+id/description"
             android:hint="@string/description">
 
         </com.google.android.material.textfield.TextInputEditText>

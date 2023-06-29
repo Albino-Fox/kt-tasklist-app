@@ -11,10 +11,10 @@ class AddTaskUseCase(
     suspend fun execute(binding: FragmentNewTaskSheetBinding, dueDateTime: LocalDateTime?) {
         val name = binding.name.text.toString()
         if (name.isBlank()) return
-        val desc = binding.desc.text.toString()
+        val description = binding.description.text.toString()
         val dueDateTimeString = if (dueDateTime == null) null else Task.dateTimeFormatter.format(dueDateTime)
 
-        val newTask = Task(name, desc, dueDateTimeString, isCompleted = false, isFavourite = false)
+        val newTask = Task(name, description, dueDateTimeString, isCompleted = false, isFavourite = false)
         repo.insertTask(newTask)
     }
 }

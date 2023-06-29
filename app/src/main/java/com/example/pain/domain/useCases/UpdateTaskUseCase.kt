@@ -11,11 +11,11 @@ class UpdateTaskUseCase(
     suspend fun execute(task: Task, binding: FragmentNewTaskSheetBinding, dueDateTime: LocalDateTime?) {
         val name = binding.name.text.toString()
         if (name.isBlank()) return
-        val desc = binding.desc.text.toString()
+        val desc = binding.description.text.toString()
         val dueDateTimeString = if (dueDateTime != null) Task.dateTimeFormatter.format(dueDateTime) else null
 
         task.name = name
-        task.desc = desc
+        task.description = desc
         task.dueDateTimeString = dueDateTimeString
 
         repo.updateTask(task)
