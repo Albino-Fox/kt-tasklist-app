@@ -8,20 +8,31 @@ import com.example.pain.presentation.CompletedTasks
 import com.example.pain.presentation.FavouriteTasks
 import com.example.pain.presentation.UncompletedTasks
 
+enum class PageType(val position: Int) {
+    UNCOMPLETED_TASKS(0),
+    COMPLETED_TASKS(1),
+    FAVOURITE_TASKS(2);
+
+    companion object {
+        fun fromPosition(position: Int): PageType {
+            return values().find { it.position == position }
+                ?: throw IllegalArgumentException("Invalid position: $position")
+        }
+    }
+}
+
 class ViewPagerAdapter(
     fragmentManager: FragmentManager,
     lifecycle: Lifecycle
 ) : FragmentStateAdapter(fragmentManager, lifecycle) {
-    override fun getItemCount(): Int {
-        return 3
-    }
 
-    override fun createFragment(position: Int) : Fragment {
-        return when (position) {
-            0 -> UncompletedTasks()
-            1 -> CompletedTasks()
-            2 -> FavouriteTasks()
-            else -> throw IllegalArgumentException("Invalid position: $position")
+    override fun getItemCount(): Int = PageType.values().size
+
+    override fun createFragment(position: Int): Fragment {
+        return when (PageType.fromPosition(position)) {
+            PageType.UNCOMPLETED_TASKS -> UncompletedTasks()
+            PageType.COMPLETED_TASKS -> CompletedTasks()
+            PageType.FAVOURITE_TASKS -> FavouriteTasks()
         }
     }
 }
