@@ -57,7 +57,6 @@ class NewTaskSheet(var task: Task?) : BottomSheetDialogFragment() {
             binding.taskTitle.text = getString(R.string.newTask)
         }
 
-//        taskViewModel = ViewModelProvider(activity)[TaskViewModel::class.java]
         binding.deleteButton.setOnClickListener{
             taskViewModel.deleteTask(task!!)
             dismiss()
@@ -90,7 +89,7 @@ class NewTaskSheet(var task: Task?) : BottomSheetDialogFragment() {
             updateTimeButtonText()
         }
         val dialog = TimePickerDialog(activity, listener, dueTime!!.hour, dueTime!!.minute, true)
-        dialog.setTitle("Task Due")
+        dialog.setTitle("Установить время")
         dialog.show()
     }
 

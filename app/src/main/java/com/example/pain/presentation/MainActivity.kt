@@ -25,8 +25,8 @@ class MainActivity : AppCompatActivity(), TaskClickListener {
 
         adapter = ViewPagerAdapter(supportFragmentManager, lifecycle)
 
-        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Uncompleted Tasks"))
-        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Completed Tasks"))
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Незавершённые задачи"))
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Завершённые задачи"))
 
         binding.viewPager.adapter = adapter
 
@@ -56,19 +56,7 @@ class MainActivity : AppCompatActivity(), TaskClickListener {
         binding.newTaskButton.setOnClickListener{
             NewTaskSheet(null).show(supportFragmentManager, "newTaskTag")
         }
-//
-//        setRecyclerView()
     }
-
-//    private fun setRecyclerView() {
-//        val mainActivity = this
-//        taskViewModel.uncompletedTasks.observe(this) {
-//            binding.taskListRecylerView.apply {
-//                layoutManager = LinearLayoutManager(applicationContext)
-//                adapter = TaskAdapter(it, mainActivity)
-//            }
-//        }
-//    }
 
     override fun editTask(task: Task) {
         NewTaskSheet(task).show(supportFragmentManager, "newTaskTag")

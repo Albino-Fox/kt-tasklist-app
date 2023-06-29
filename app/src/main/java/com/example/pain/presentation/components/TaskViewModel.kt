@@ -9,7 +9,6 @@ import kotlinx.coroutines.launch
 import java.time.LocalTime
 
 class TaskViewModel(private val repo: TaskRepo): ViewModel() {
-    // use cases
     private val addTask = AddTask(repo)
     private val getTasks = GetTasks(repo)
     private val getUncompletedTasks = GetUncompletedTasks(repo)
@@ -39,13 +38,3 @@ class TaskViewModel(private val repo: TaskRepo): ViewModel() {
     }
 }
 
-class TaskModelFactory(
-    private val repo: TaskRepo
-): ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(TaskViewModel::class.java))
-            return TaskViewModel(repo) as T
-
-        throw java.lang.IllegalArgumentException("unknown class")
-    }
-}

@@ -20,7 +20,6 @@ class TaskViewHolder(
 
         if (task.isCompleted()) {
             binding.name.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
-//            binding.dueTime.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
         }
 
         binding.completeButton.setImageResource(task.imageRes())
