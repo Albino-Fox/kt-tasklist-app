@@ -1,16 +1,16 @@
 <resources>
     <string name="app_name">TaskApp</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="checkbox">checkBox</string>
-    <string name="placeholdername">PlaceHolderName</string>
-    <string name="duetime">DueTime</string>
-    <string name="new_task">New Task</string>
-    <string name="delete">Delete</string>
-    <string name="select_time">Select Time</string>
-    <string name="save">Save</string>
-    <string name="name">Name</string>
-    <string name="description">Description</string>
-    <string name="editTask">Edit Task</string>
-    <string name="newTask">New Task</string>
+    <string name="placeholdername">SampleText</string>
+    <string name="duetime">Время</string>
+    <string name="new_task">Новая задача</string>
+    <string name="delete">Удалить</string>
+    <string name="select_time">Выбрать время</string>
+    <string name="save">Сохранить</string>
+    <string name="name">Название</string>
+    <string name="description">Описание</string>
+    <string name="editTask">Редактировать задачу</string>
+    <string name="appbar_scrolling_view_behavior">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="add_task_button">Добавить задачу</string>
 </resources>
