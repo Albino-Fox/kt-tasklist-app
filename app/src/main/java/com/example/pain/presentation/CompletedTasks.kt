@@ -11,15 +11,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pain.R
 import com.example.pain.TaskApp
 import com.example.pain.data.model.Task
+import com.example.pain.databinding.FragmentCompletedTasksBinding
 import com.example.pain.databinding.FragmentNewTaskSheetBinding
-import com.example.pain.databinding.FragmentUncompletedTasksBinding
 import com.example.pain.presentation.components.TaskAdapter
 import com.example.pain.presentation.components.TaskClickListener
 import com.example.pain.presentation.components.TaskViewModelFactory
 import com.example.pain.presentation.components.TaskViewModel
 
 class CompletedTasks : Fragment(), TaskClickListener {
-    private lateinit var binding: FragmentUncompletedTasksBinding
+    private lateinit var binding: FragmentCompletedTasksBinding
     private val taskViewModel: TaskViewModel by viewModels {
         TaskViewModelFactory((requireActivity().application as TaskApp).repo)
     }
@@ -34,7 +34,7 @@ class CompletedTasks : Fragment(), TaskClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentUncompletedTasksBinding.inflate(inflater, container, false)
+        binding = FragmentCompletedTasksBinding.inflate(inflater, container, false)
         return binding.root
     }
 
