@@ -15,7 +15,7 @@ class TaskViewModel(private val repo: TaskRepo): ViewModel() {
     private val getCompletedTasksUseCase = GetCompletedTasksUseCase(repo)
     private val getFavouriteTasksUseCase = GetFavouriteTasksUseCase(repo)
     private val updateTaskUseCase = UpdateTaskUseCase(repo)
-    private val changeCompleteState = ChangeCompleteState(repo)
+    private val changeCompletionState = ChangeCompletionState(repo)
     private val changeFavouriteState = ChangeFavouriteState(repo)
     private val deleteTaskUseCase = DeleteTaskUseCase(repo)
 
@@ -33,7 +33,7 @@ class TaskViewModel(private val repo: TaskRepo): ViewModel() {
     }
 
     fun setCompleted(task: Task) = viewModelScope.launch {
-        changeCompleteState.execute(task)
+        changeCompletionState.execute(task)
     }
 
     fun setFavourited(task: Task) = viewModelScope.launch{

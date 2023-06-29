@@ -21,8 +21,8 @@ data class Task (
     @ColumnInfo(name = "dueTime")
     var dueTimeString: String?,
 
-    @ColumnInfo(name = "completedDateString")
-    var completedDateString: String?,
+    @ColumnInfo(name = "isCompleted")
+    var isCompleted: Boolean,
 
     @ColumnInfo(name = "isFavourite")
     var isFavourite: Boolean,
@@ -31,13 +31,10 @@ data class Task (
     var id: Int = 0
 ) {
 
-    private fun completedDate(): LocalDate? = if (completedDateString == null) null
-        else LocalDate.parse(completedDateString, dateFormatter)
     fun dueTime(): LocalTime? = if (dueTimeString == null) null else LocalTime.parse(dueTimeString, timeFormatter)
 
-    fun isCompleted() = completedDate() != null
-    fun imageCheckerRes(): Int = if (isCompleted()) R.drawable.check_24 else R.drawable.uncheck_24
-    fun imageCheckerColor(context: Context): Int = if (isCompleted()) green(context) else black(context)
+    fun imageCheckerRes(): Int = if (isCompleted) R.drawable.check_24 else R.drawable.uncheck_24
+    fun imageCheckerColor(context: Context): Int = if (isCompleted) green(context) else black(context)
 
     fun imageFavRes(): Int = if (isFavourite) R.drawable.star_full_24 else R.drawable.star_empty_24
     fun imageFavColor(context: Context): Int = if (isFavourite) gold(context) else black(context)

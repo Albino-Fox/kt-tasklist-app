@@ -17,8 +17,9 @@ class TaskViewHolder(
 
     fun bindTask(task: Task) {
         binding.name.text = task.name
+        binding.desc.text = task.desc
 
-        if (task.isCompleted()) {
+        if (task.isCompleted) {
             binding.name.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
         }
 

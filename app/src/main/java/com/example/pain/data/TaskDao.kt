@@ -8,10 +8,10 @@ interface TaskDao {
     @Query("SELECT * FROM task_table ORDER BY id ASC")
     fun getTasks(): Flow<List<Task>>
 
-    @Query("SELECT * FROM task_table WHERE completedDateString IS NULL")
+    @Query("SELECT * FROM task_table WHERE isCompleted == 0")
     fun getUncompletedTasks() : Flow<List<Task>>
 
-    @Query("SELECT * FROM task_table WHERE completedDateString IS NOT NULL")
+    @Query("SELECT * FROM task_table WHERE isCompleted != 0")
     fun getCompletedTasks() : Flow<List<Task>>
 
     @Query("SELECT * FROM task_table WHERE isFavourite != 0")
