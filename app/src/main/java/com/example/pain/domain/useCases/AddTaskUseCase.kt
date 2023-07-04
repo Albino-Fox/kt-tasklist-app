@@ -14,7 +14,10 @@ class AddTaskUseCase(
         val name = binding.name.text.toString()
         if (name.isBlank()) return
         val description = binding.description.text.toString()
-        val taskViewData = TaskViewData(name, description, dueDateTime,
+        val taskViewData = TaskViewData(
+            name,
+            description,
+            dueDateTime,
             isCompleted = false,
             isFavourite = false,
             id = -1 //invalid for new task
