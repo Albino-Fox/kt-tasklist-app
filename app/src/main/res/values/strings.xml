@@ -16,4 +16,5 @@
     <string name="add_task_button">Добавить задачу</string>
     <string name="task_description_placeholder">BottomText</string>
     <string name="favourite">favouriteButton</string>
+    <string name="task_label">Задачи</string>
 </resources>

@@ -34,7 +34,7 @@ class FavouriteTasks : Fragment(), TaskClickListener {
     private fun setRecyclerView() {
         val fragment = this
         taskViewModel.favouriteTasks.observe(this) {
-            binding.taskListRecylerView.apply {
+            binding.taskListRecyclerView.apply {
                 layoutManager = LinearLayoutManager(activity)
                 adapter = TaskAdapter(it, fragment)
             }

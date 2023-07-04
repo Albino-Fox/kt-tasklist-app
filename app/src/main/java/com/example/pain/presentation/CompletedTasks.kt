@@ -34,7 +34,7 @@ class CompletedTasks : Fragment(), TaskClickListener {
     private fun setRecyclerView() {
         val fragment = this
         taskViewModel.completedTasks.observe(this) {
-            binding.taskListRecylerView.apply {
+            binding.taskListRecyclerView.apply {
                 layoutManager = LinearLayoutManager(activity)
                 adapter = TaskAdapter(it, fragment)
             }

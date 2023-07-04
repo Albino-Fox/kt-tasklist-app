@@ -90,8 +90,7 @@
             android:layout_height="match_parent"
             android:id="@+id/timePickerInput"
             android:hint="@string/select_time"
-            android:focusable="false"
-            android:onClick="openTimePickerDialog"/>
+            android:focusable="false"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
